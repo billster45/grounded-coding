@@ -39,23 +39,19 @@ It should be read as a reference implementation, not a universal list of sources
 
 ## Example Prompts
 
-These are the kinds of prompts this skill should improve. It helps to show both styles:
+These are the kinds of prompts this skill should improve. The official docs say natural-language matching is supported:
 
-- natural-language prompts, because good skills should be discoverable without the user having to remember the skill name
-- explicit `$grounded-coding` prompts, because sometimes you want to force the workflow on for a specific task
+- Codex quote: "Codex can choose a skill when your task matches the skill `description`."
+- Claude Code quote: "Claude uses skills when relevant, or you can invoke one directly with `/skill-name`."
 
-Natural-language prompts:
+For grounded work, I recommend explicit invocation so the docs-first workflow is intentional rather than inferred. The examples below therefore show only the explicit form.
 
-- "Use the AWS docs to check whether API Gateway or Lambda response streaming is the better fit for this chatbot, then explain the tradeoff with links."
-- "Before editing this React component, check the official React docs for the supported pattern here and include the exact doc URL you used."
-- "Review this OpenAI API change against the official docs and call out anything unsupported, inferred, or stale."
-- "Use Microsoft Learn to verify whether this Azure SDK method actually exists before we change the implementation."
-- "Make the change, then give me a grounded close-out with source URLs, what each source confirmed, local verification, and any remaining uncertainty."
+Recommended explicit invocation prompts:
 
-Explicit invocation prompts:
-
-- "$grounded-coding Use the AWS docs to check whether API Gateway or Lambda response streaming is the better fit for this chatbot, then explain the tradeoff with links."
-- "$grounded-coding Review this OpenAI API change against the official docs and call out anything unsupported, inferred, or stale."
+- "Codex: $grounded-coding Use the AWS docs to check whether API Gateway or Lambda response streaming is the better fit for this chatbot, then explain the tradeoff with links."
+- "Claude Code: /grounded-coding Use the AWS docs to check whether API Gateway or Lambda response streaming is the better fit for this chatbot, then explain the tradeoff with links."
+- "Codex: $grounded-coding Review this OpenAI API change against the official docs and call out anything unsupported, inferred, or stale."
+- "Claude Code: /grounded-coding Review this OpenAI API change against the official docs and call out anything unsupported, inferred, or stale."
 
 ## How It Works
 
@@ -121,6 +117,13 @@ These sources shape the repo in a practical way:
 ## Install And Trigger
 
 The most explicit way to test this skill today is to clone the repo and copy the nested `grounded-coding/` skill folder into the location your agent reads from.
+
+Quick cheat sheet:
+
+| Tool | Install location | Explicit invocation | Docs |
+| --- | --- | --- | --- |
+| Codex | `.agents/skills/` or `~/.agents/skills/` | `$grounded-coding` or `/skills` | https://developers.openai.com/codex/skills/ |
+| Claude Code | `.claude/skills/` or `~/.claude/skills/` | `/grounded-coding` | https://code.claude.com/docs/en/skills |
 
 ### Codex
 
