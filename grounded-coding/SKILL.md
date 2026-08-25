@@ -111,6 +111,18 @@ When reviewing an existing change, focus on:
 
 If a change appears correct but was not grounded, call that out. "Probably right" is weaker than "verified against the source."
 
+### Integration Proof Ladder
+
+For each material integration boundary, identify the exact pinned or deployed version before selecting sources. Consult its exact schema or API reference, inspect pinned implementation when documentation does not establish adapter behavior, and validate the generated contract locally, including authorization simulation where available.
+
+Before closing the review, check:
+
+- exact schema types, enum or wire values, constraints, and pinned-version behavior; do not assume runtime coercion unless the pinned contract guarantees it
+- whether accepted fields are actually rendered, serialized, transformed, or forwarded as intended
+- authorization compatibility across action, resource, principal, and condition keys, including first-use or bootstrap permissions separately from runtime permissions
+- material confirmed non-findings, stated explicitly when the review asks for them
+- any remaining managed-service uncertainty; when live validation is needed, define the smallest probe with prerequisites, scope, cost, stop conditions, evidence, rollback, and cleanup
+
 ## Grounded Close-Out
 
 Use this structure for final chat summaries and for any commit or PR body created for non-trivial grounded work.
