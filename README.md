@@ -60,9 +60,10 @@ Recommended explicit invocation prompts:
 3. If a narrower vendor skill is installed, compose with it instead of duplicating it. For Microsoft work, that usually means `microsoft-docs` for concepts, tutorials, configuration guidance, and limits, or `microsoft-code-reference` for API and SDK verification.
 4. Read the relevant official docs before editing code.
 5. If more than one documented path is valid, explain the tradeoff and record the choice explicitly.
-6. Implement only what the source supports, label anything beyond that as inference, then verify locally.
-7. Check for contract drift and update repo-owned docs, tests, comments, migration notes, or runbooks when needed.
-8. Close with grounded evidence that survives in chat, commits, and PRs when those artifacts exist.
+6. For material integration boundaries, follow an integration proof ladder: identify pinned versions, consult exact schemas and API references, inspect implementation-specific adapters where needed, validate generated contracts locally, simulate authorization where possible, and define the smallest safe live probe for anything still unproven.
+7. Implement only what the source supports, label anything beyond that as inference, then verify locally.
+8. Check for contract drift and update repo-owned docs, tests, comments, migration notes, or runbooks when needed.
+9. Close with grounded evidence that survives in chat, commits, and PRs when those artifacts exist.
 
 ## Composing With Microsoft Learn Skills
 
